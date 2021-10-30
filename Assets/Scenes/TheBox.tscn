@@ -7,7 +7,7 @@
 extents = Vector2( 14.048, 9.04574 )
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 1.67289
+radius = 2.50261
 height = 24.7442
 
 [node name="The Box" type="RigidBody2D" groups=[
@@ -34,7 +34,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
-position = Vector2( 0, 12.943 )
+position = Vector2( 0, 13.3403 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
