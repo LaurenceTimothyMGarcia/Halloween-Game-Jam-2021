@@ -1,31 +1,19 @@
 [gd_scene load_steps=4 format=2]
 
-<<<<<<< HEAD:Assets/Scenes/Gun/Bullet.tscn
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Gun/Bullet.gd" type="Script" id=2]
-=======
-[ext_resource path="res://Assets/Sprites/Tanjerine.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Scenes/GunScenes/Bullet.gd" type="Script" id=2]
->>>>>>> Brayden:Assets/Scenes/GunScenes/Bullet.tscn
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 20.8585
 height = 29.7403
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 16
-collision_mask = 14
 script = ExtResource( 2 )
 vel = 2000
 
 [node name="Sprite" type="Sprite" parent="."]
-<<<<<<< HEAD:Assets/Scenes/Gun/Bullet.tscn
 position = Vector2( 0, 0.982153 )
 scale = Vector2( 1, 0.662384 )
-=======
-position = Vector2( 5.03245, 3.17839 )
-scale = Vector2( 1.04768, 0.50735 )
->>>>>>> Brayden:Assets/Scenes/GunScenes/Bullet.tscn
 texture = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""

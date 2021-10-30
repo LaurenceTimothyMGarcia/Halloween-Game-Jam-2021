@@ -32,15 +32,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	_lookAtMouse()
 	_movementHandler(delta)
 	_theBoxHandler()
-
-func _lookAtMouse():
-	if get_global_mouse_position().x >= position.x:
-		_lookRight()
-	else:
-		_lookLeft()
 
 func _movementHandler(var delta):
 	velocity.x = 0
@@ -49,6 +42,10 @@ func _movementHandler(var delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	
+	if velocity.x > 0:
+		lookRight()
+	elif velocity.x < 0:
+		lookLeft()
 	
 	if Input.is_action_just_pressed("jump") and _jumpReady:
 		_jumpReady = false
@@ -65,22 +62,18 @@ func _movementHandler(var delta):
 	
 	velocity = move_and_slide(velocity)
 
-func _lookLeft():
+func lookLeft():
 	if _facingRight:
 		_facingRight = false
 		$GrabPoint.position.x = -_grabPointSwapDistance
 		$GrabZone.scale *= -1
-		$Gun.position.x *= -1
-		$Sprite.scale.x *= -1
 		emit_signal("facing_left")
 
-func _lookRight():
+func lookRight():
 	if !_facingRight:
 		_facingRight = true
 		$GrabPoint.position.x = _grabPointSwapDistance
 		$GrabZone.scale *= -1
-		$Gun.position.x *= -1
-		$Sprite.scale.x *= -1
 		emit_signal("facing_right")
 
 func _on_GroundedChecker_body_entered(body):
