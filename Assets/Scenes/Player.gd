@@ -1,0 +1,39 @@
+extends KinematicBody2D
+
+
+# Declare member variables here.
+export var walkSpeed = 200
+export var jumpVel = 500
+export var gravity = 1000
+
+var _jumpReady
+
+var velocity = Vector2()
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	_jumpReady = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	_movementHandler(delta)
+
+func _movementHandler(var delta):
+	velocity.x = 0
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
+	if Input.is_action_just_pressed("jump") and _jumpReady:
+		_jumpReady = false
+		velocity.y = -jumpVel
+	velocity.x *= walkSpeed
+	velocity.y += gravity * delta
+	velocity = move_and_slide(velocity)
+
+
+func _on_GroundedChecker_body_entered(body):
+	if body.is_in_group("platforms"):
+		_jumpReady = true
