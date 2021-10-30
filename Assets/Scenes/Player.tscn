@@ -5,25 +5,25 @@
 [ext_resource path="res://Assets/Scenes/Gun/Gun.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 30.75
+radius = 2.23333
 height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 8.75
-height = 23.5
+radius = 0.66461
+height = 1.44525
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 34, 28 )
+extents = Vector2( 1.88755, 2.28663 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Gun" parent="." instance=ExtResource( 3 )]
-position = Vector2( 28.2669, 1.95 )
+position = Vector2( 1.18187, 0.0649617 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( -1.731, 3.27 )
+position = Vector2( -0.0993252, 0.0422988 )
 scale = Vector2( 0.75, 1 )
 shape = SubResource( 1 )
 
@@ -36,18 +36,18 @@ hframes = 4
 collision_mask = 14
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
-position = Vector2( 0, 35 )
+position = Vector2( -0.000173569, 2.13747 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
-position = Vector2( 66, 0 )
+position = Vector2( 5, 0 )
 
 [node name="GrabZone" type="Area2D" parent="."]
 collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
-position = Vector2( 68, -1 )
+position = Vector2( 2.64938, -0.0252678 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]

@@ -14,6 +14,10 @@ extents = Vector2( 271.75, 37.2667 )
 position = Vector2( 248, 120 )
 collision_mask = 13
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.1, 0.1 )
+
 [node name="Floor" type="StaticBody2D" parent="." groups=[
 "platforms",
 ]]
@@ -30,10 +34,10 @@ scale = Vector2( 8.51562, 1.10938 )
 texture = ExtResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 644.906, 146.835 )
+position = Vector2( 812.49, 168.402 )
 collision_mask = 13
 
 [node name="The Box" parent="." instance=ExtResource( 4 )]
-position = Vector2( 437.75, 208.733 )
+position = Vector2( 245.163, 224.749 )
 collision_layer = 8
 mass = 1000.0
