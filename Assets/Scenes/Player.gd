@@ -5,8 +5,8 @@ extends KinematicBody2D
 export var walkSpeed = 200
 export var jumpVel = 500
 export var gravity = 1000
-export var fallMultiplier = 3
-export var lowJumpMultiplier = 2
+export var fallMultiplier = 2
+export var lowJumpMultiplier = 3
 
 var _jumpReady
 
@@ -28,7 +28,7 @@ func _movementHandler(var delta):
 		velocity.x -= 1
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	if Input.is_action_pressed("jump") and _jumpReady:
+	if Input.is_action_just_pressed("jump") and _jumpReady:
 		_jumpReady = false
 		velocity.y = -jumpVel
 
