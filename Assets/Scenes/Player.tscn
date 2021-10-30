@@ -5,12 +5,12 @@
 [ext_resource path="res://Assets/Scenes/Gun/Gun.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 10.1509
-height = 6.49487
+radius = 5.19222
+height = 14.4213
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 1.64562
-height = 9.53405
+height = 3.76375
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 9.75712, 12.0971 )
@@ -36,7 +36,7 @@ position = Vector2( 0.865, 13.714 )
 collision_mask = 14
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
-position = Vector2( -0.157494, 0 )
+position = Vector2( -0.5, 0 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
@@ -48,7 +48,7 @@ position = Vector2( 13.14, 1.74 )
 collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
-position = Vector2( -0.106702, -0.104014 )
+position = Vector2( 0.838241, 0.0534758 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]

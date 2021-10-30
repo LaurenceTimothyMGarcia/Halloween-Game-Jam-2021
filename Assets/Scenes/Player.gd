@@ -8,6 +8,9 @@ export var gravity = 1000
 export var fallMultiplier = 2
 export var lowJumpMultiplier = 4
 
+export var maxHP = 10
+var _currentHP
+
 enum boxState {platform, carried, thrown}
 
 var _jumpReady
@@ -16,6 +19,8 @@ var _facingRight
 var _grabPointSwapDistance
 
 var theBox
+
+var holdingBox
 
 signal facing_left
 signal facing_right
@@ -27,7 +32,9 @@ var velocity = Vector2()
 func _ready():
 	_jumpReady = true
 	_facingRight = true
+	holdingBox = false
 	_grabPointSwapDistance = $GrabPoint.position.x
+	_currentHP = maxHP
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +42,7 @@ func _physics_process(delta):
 	_lookAtMouse()
 	_movementHandler(delta)
 	_theBoxHandler()
+	_tryDying()
 
 func _lookAtMouse():
 	if get_global_mouse_position().x >= position.x:
@@ -70,6 +78,7 @@ func _lookLeft():
 		_facingRight = false
 		$GrabPoint.position.x = -_grabPointSwapDistance
 		$GrabZone.scale *= -1
+		$GrabZone.position.x *= -1
 		$Gun.position.x *= -1
 		$Sprite.scale.x *= -1
 		emit_signal("facing_left")
@@ -79,6 +88,7 @@ func _lookRight():
 		_facingRight = true
 		$GrabPoint.position.x = _grabPointSwapDistance
 		$GrabZone.scale *= -1
+		$GrabZone.position.x *= -1
 		$Gun.position.x *= -1
 		$Sprite.scale.x *= -1
 		emit_signal("facing_right")
@@ -95,10 +105,12 @@ func _theBoxHandler():
 			connect("facing_left", theBox, "_on_Player_facing_left")
 			connect("facing_right", theBox, "_on_Player_facing_right")
 			theBox.facingRight = _facingRight
+			holdingBox = true
 		elif theBox.currentState == boxState.carried:
 			disconnect("facing_left", theBox, "_on_Player_facing_left")
 			disconnect("facing_right", theBox, "_on_Player_facing_right")
 			theBox.call("getThrown")
+			holdingBox = false
 
 func _on_GrabZone_body_entered(body):
 	if body.is_in_group("thebox"):
@@ -107,3 +119,11 @@ func _on_GrabZone_body_entered(body):
 func _on_GrabZone_body_exited(body):
 	if body.is_in_group("thebox"):
 		theBox = null
+
+func takeDamage(var amount):
+	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+
+func _tryDying():
+	if (_currentHP == 0):
+		print("fuck")
+		takeDamage(-100)

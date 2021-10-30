@@ -40,4 +40,4 @@ collision_mask = 13
 [node name="The Box" parent="." instance=ExtResource( 4 )]
 position = Vector2( 352.618, 188.041 )
 collision_layer = 8
-mass = 1000.0
+mass = 500.0
