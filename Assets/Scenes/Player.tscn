@@ -41,7 +41,7 @@ rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
-position = Vector2( 24.486, 1.654 )
+position = Vector2( 25.4883, -5.69591 )
 
 [node name="GrabZone" type="Area2D" parent="."]
 position = Vector2( 13.14, 1.74 )
