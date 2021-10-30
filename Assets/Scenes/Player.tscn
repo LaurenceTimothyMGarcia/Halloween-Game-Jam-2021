@@ -1,11 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Player_Walk.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 30.75
-height = 0.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.7339, 30.2689 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.75
@@ -18,15 +17,19 @@ extents = Vector2( 34, 28 )
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( -1.731, 3.27 )
+scale = Vector2( 0.75, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )
+hframes = 4
 
 [node name="GroundedChecker" type="Area2D" parent="."]
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
-position = Vector2( 0, 28 )
+position = Vector2( 0, 35 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
