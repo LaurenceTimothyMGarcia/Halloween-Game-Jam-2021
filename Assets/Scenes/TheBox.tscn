@@ -4,26 +4,31 @@
 [ext_resource path="res://Assets/Scenes/TheBox.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.5668, 15.6904 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 2.0
-height = 15.0
+height = 24.5541
 
-[node name="The Box" type="RigidBody2D"]
+[node name="The Box" type="RigidBody2D" groups=[
+"platforms",
+"thebox",
+]]
 mode = 1
+gravity_scale = 5.0
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.328125, 0.328125 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
-position = Vector2( 0, 9 )
+position = Vector2( 0, 14.457 )
 rotation = 1.5708
 shape = SubResource( 2 )
 

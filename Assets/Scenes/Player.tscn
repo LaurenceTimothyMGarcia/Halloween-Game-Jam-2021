@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
@@ -10,6 +10,9 @@ height = 0.0
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.75
 height = 23.5
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 34, 28 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -27,4 +30,15 @@ position = Vector2( 0, 28 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
+[node name="GrabPoint" type="Node2D" parent="."]
+position = Vector2( 66, 0 )
+
+[node name="GrabZone" type="Area2D" parent="."]
+
+[node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
+position = Vector2( 68, -1 )
+shape = SubResource( 3 )
+
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
+[connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]
+[connection signal="body_exited" from="GrabZone" to="." method="_on_GrabZone_body_exited"]
