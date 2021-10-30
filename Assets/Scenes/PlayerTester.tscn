@@ -4,12 +4,12 @@
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 271.75, 37.2667 )
+extents = Vector2( 390.185, 45.2817 )
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 248, 120 )
+position = Vector2( 218.783, 98.2274 )
 
 [node name="Floor" type="RigidBody2D" parent="." groups=[
 "platforms",
@@ -17,11 +17,11 @@ position = Vector2( 248, 120 )
 mode = 1
 gravity_scale = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 443, 265 )
+[node name="collision" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 247.095, 251.661 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Floor"]
-position = Vector2( 443.5, 265.5 )
-scale = Vector2( 8.51562, 1.10938 )
+position = Vector2( 253.53, 248.064 )
+scale = Vector2( 10.8148, 1 )
 texture = ExtResource( 2 )
