@@ -5,6 +5,8 @@ extends KinematicBody2D
 export var walkSpeed = 200
 export var jumpVel = 500
 export var gravity = 1000
+export var fallMultiplier = 3
+export var lowJumpMultiplier = 2
 
 var _jumpReady
 
@@ -17,7 +19,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	_movementHandler(delta)
 
 func _movementHandler(var delta):
@@ -26,11 +28,19 @@ func _movementHandler(var delta):
 		velocity.x -= 1
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	if Input.is_action_just_pressed("jump") and _jumpReady:
+	if Input.is_action_pressed("jump") and _jumpReady:
 		_jumpReady = false
 		velocity.y = -jumpVel
+
+	if velocity.y > 0:
+		velocity.y += gravity * delta * (fallMultiplier - 1)
+	elif velocity.y < 0 and !Input.is_action_pressed("jump"):
+		velocity.y += gravity * delta * (lowJumpMultiplier - 1)
+	else:
+		velocity.y += gravity * delta
+
 	velocity.x *= walkSpeed
-	velocity.y += gravity * delta
+	
 	velocity = move_and_slide(velocity)
 
 
