@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 # Declare member variables here.
-export var walkSpeed = 300
+export var walkSpeed = 200
 export var jumpVel = 400
 export var gravity = 1000
 export var fallMultiplier = 2
