@@ -7,6 +7,9 @@ export var latchSpeed = 1000
 enum boxState {platform, carried, thrown}
 var currentState
 
+export var maxHP = 6
+var _currentHP
+
 var targetPos
 var _moveDir
 
@@ -21,11 +24,13 @@ signal box_thrown
 func _ready():
 	currentState = boxState.platform
 	_moveDir = Vector2()
+	_currentHP = maxHP
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	movementHandler(delta)
+	_tryDying()
 
 func _enterCarriedMode():
 	if currentState == boxState.platform:
@@ -80,3 +85,12 @@ func _on_Player_facing_right():
 	if currentState == boxState.carried:
 		position.x += 2 * swapSideDist
 		facingRight = true
+
+
+func takeDamage(var amount):
+	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+
+func _tryDying():
+	if (_currentHP == 0):
+		print("heck")
+		takeDamage(-100)
