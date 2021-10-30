@@ -27,3 +27,6 @@ func detect_turn_around():
 	if not $RayCast2D.is_colliding() and is_on_floor():
 		is_moving_left = !is_moving_left
 		scale.x = -scale.x
+
+func hit():
+	queue_free()
