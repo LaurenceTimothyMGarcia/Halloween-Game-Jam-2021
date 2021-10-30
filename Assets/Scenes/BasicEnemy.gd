@@ -10,12 +10,12 @@ var speed = 120
 #func _ready():
 	#$AnimationPlayer.play("Walk")
 
-func _process(delta):
+func _physics_process(delta):
 	#if $AnimationPlayer.current_animation == "Attack":
 		#return
 	
 	move_character()
-	#detect_turn_around()
+	detect_turn_around()
 	
 func move_character():
 	if is_moving_left:
