@@ -3,8 +3,9 @@
 [ext_resource path="res://Assets/Sprites/Player_Walk.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 17.7339, 30.2689 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 30.75
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.75
@@ -14,6 +15,7 @@ height = 23.5
 extents = Vector2( 34, 28 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -27,6 +29,7 @@ texture = ExtResource( 1 )
 hframes = 4
 
 [node name="GroundedChecker" type="Area2D" parent="."]
+collision_mask = 14
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( 0, 35 )
@@ -37,6 +40,7 @@ shape = SubResource( 2 )
 position = Vector2( 66, 0 )
 
 [node name="GrabZone" type="Area2D" parent="."]
+collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 68, -1 )

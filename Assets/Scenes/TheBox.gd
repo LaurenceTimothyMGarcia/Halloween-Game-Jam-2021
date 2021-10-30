@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 # Declare member variables here.
-export var latchSpeed = 500
+export var latchSpeed = 2000
 
 enum boxState {platform, carried, thrown}
 var currentState
