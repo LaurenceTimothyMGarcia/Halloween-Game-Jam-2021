@@ -14,21 +14,21 @@ func _physics_process(delta):
 	#if $AnimationPlayer.current_animation == "Attack":
 		#return
 	
-	move_character()
+	move_character(delta)
 	detect_turn_around()
 	
-func move_character():
+func move_character(var delta):
 	if is_moving_left:
-		velocity.x = -speed
+		velocity.x = -speed * delta
 	else:
-		velocity.x = speed
+		velocity.x = speed * delta
 	linear_velocity.x = velocity.x
 
 func detect_turn_around():
 	if not $RayCast2D.is_colliding():
 		is_moving_left = !is_moving_left
 		scale.x = -scale.x
-		print("Time to turn around")
+		#print("Time to turn around")
 
 func hit():
 	$AttackDetector.monitoring = true
