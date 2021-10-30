@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_Button_pressed():
-	$"The Box".getPickedUp($grabPoint)
+	$"The Box".getPickedUp($grabPoint, 0)
 
 
 func _on_Button2_pressed():

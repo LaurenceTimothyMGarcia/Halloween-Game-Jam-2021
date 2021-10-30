@@ -10,6 +10,10 @@ var currentState
 var targetPos
 var _moveDir
 
+var swapSideDist
+
+var facingRight
+
 signal box_grabbed
 signal box_thrown
 
@@ -26,26 +30,32 @@ func _physics_process(delta):
 func _enterCarriedMode():
 	if currentState == boxState.platform:
 		currentState = boxState.carried
-		call_deferred("set_mode",MODE_STATIC)
+		call_deferred("set_mode",MODE_KINEMATIC)
+		remove_from_group("platforms")
 		# $Hitbox.disabled = true
 
 func _enterThrownMode():
 	if currentState == boxState.carried:
 		currentState = boxState.thrown
 		call_deferred("set_mode",MODE_CHARACTER)
-		$Hitbox.disabled = false
-		linear_velocity = Vector2(100,-20)
+		# $Hitbox.disabled = false
+		if facingRight:
+			linear_velocity = Vector2(400,-20)
+		else:
+			linear_velocity = Vector2(-400,-20)
 
 func _enterPlatformMode():
 	if currentState == boxState.thrown:
 		currentState = boxState.platform
 		call_deferred("set_mode",MODE_STATIC)
+		add_to_group("platforms")
 
 # this is the function that player can call in order to pick up the box
-func getPickedUp(var grabPoint):
+func getPickedUp(var grabPoint, var grabPointDist):
 	if currentState == boxState.platform:
 		emit_signal("box_grabbed")
 		targetPos = grabPoint
+		swapSideDist = grabPointDist
 		_enterCarriedMode()
 
 func getThrown():
@@ -59,4 +69,14 @@ func _on_GroundedChecker_body_entered(body):
 
 func movementHandler(delta):
 	if currentState == boxState.carried:
-		position = position.move_toward(targetPos.position, latchSpeed * delta)
+		position = position.move_toward(targetPos.get_global_position(), latchSpeed * delta)
+
+func _on_Player_facing_left():
+	if currentState == boxState.carried:
+		position.x -= 2 * swapSideDist
+		facingRight = false
+
+func _on_Player_facing_right():
+	if currentState == boxState.carried:
+		position.x += 2 * swapSideDist
+		facingRight = true
