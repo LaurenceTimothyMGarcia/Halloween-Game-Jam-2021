@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TanjerineGun.png-7c9a08905628aa7dffee9711237337e1.stex"
+path="res://.import/mc sprite 102921.png-87a1627a93ca61d20cd888d03b607397.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TanjerineGun.png"
-dest_files=[ "res://.import/TanjerineGun.png-7c9a08905628aa7dffee9711237337e1.stex" ]
+source_file="res://Assets/Sprites/mc sprite 102921.png"
+dest_files=[ "res://.import/mc sprite 102921.png-87a1627a93ca61d20cd888d03b607397.stex" ]
 
 [params]
 
