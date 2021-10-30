@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Tanjerine.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Scenes/GunScenes/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 20.8585
@@ -11,6 +12,9 @@ script = ExtResource( 2 )
 vel = 2000
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 5.03245, 3.17839 )
+scale = Vector2( 1.04768, 0.50735 )
+texture = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
