@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
@@ -12,6 +13,9 @@ extents = Vector2( 271.75, 37.2667 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 248, 120 )
 collision_mask = 6
+
+[node name="The Box" parent="." instance=ExtResource( 4 )]
+position = Vector2( 399.232, 184.932 )
 
 [node name="Floor" type="RigidBody2D" parent="." groups=[
 "platforms",
