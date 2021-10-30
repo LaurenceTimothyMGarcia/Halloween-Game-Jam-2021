@@ -13,9 +13,9 @@ func _physics_process(delta):
 	look_at(mousePos)
 	
 	if(Input.is_mouse_button_pressed(1)) and can_fire:
-		# print("hi")
+
 		var bulletInstance = bullet.instance()
-		bulletInstance.position = $Position2D.global_position 
+		bulletInstance.position = $MuzzleArea.global_position 
 		bulletInstance.rotation = rotation
 		get_parent().add_child(bulletInstance)
 		can_fire = false

@@ -7,13 +7,14 @@ export var vel = 200;
 func _ready():
 	set_as_toplevel(true)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += (Vector2.RIGHT*vel).rotated(rotation) * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()	#delete off screen bullets
-	
-func take_damage():
+
+func _on_Bullet_body_entered(body):
+	if body.has_method("hit"):
+		body.hit()
 	queue_free()
