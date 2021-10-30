@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=2]
+=======
+[gd_scene load_steps=6 format=2]
+>>>>>>> Brayden
 
 [ext_resource path="res://Assets/Sprites/Player_Walk.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
+<<<<<<< HEAD
 [ext_resource path="res://Assets/Scenes/Gun/Gun.tscn" type="PackedScene" id=3]
+=======
+[ext_resource path="res://Assets/Scenes/GunScenes/Gun.tscn" type="PackedScene" id=3]
+>>>>>>> Brayden
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.75
@@ -31,6 +39,10 @@ shape = SubResource( 1 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )
 hframes = 4
+
+[node name="Gun" parent="." instance=ExtResource( 3 )]
+position = Vector2( 49.3332, 6.10035 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
 collision_mask = 14
