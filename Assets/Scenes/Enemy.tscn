@@ -17,6 +17,6 @@ modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -58.2711, 0 )
+position = Vector2( -50, 0 )
 enabled = true
 collision_mask = 4
