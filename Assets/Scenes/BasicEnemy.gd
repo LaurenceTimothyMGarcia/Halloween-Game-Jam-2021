@@ -27,3 +27,16 @@ func detect_turn_around():
 	if not $RayCast2D.is_colliding() and is_on_floor():
 		is_moving_left = !is_moving_left
 		scale.x = -scale.x
+
+func hit():
+	$AttackDetector.monitoring = true
+	print("Hit player")
+
+func end_of_hit():
+	$AttackDetector.monitoring = false
+
+#func start_walk(): go back to tutorial to connect things
+	#$AnimationPlayer.play("Walk")
+
+#func _on_PlayerDetector_body_entered(body):
+	#$AnimationPlayer.play("Attack")
