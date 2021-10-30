@@ -2,11 +2,11 @@ extends Node2D
 
 var can_fire = true
 
-var bullet = preload("res://Scenes/Bullet.tscn")
+export (PackedScene) var bullet
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_as_toplevel(true)
+	pass
 
 func _physics_process(delta):
 	var mousePos = get_global_mouse_position()
