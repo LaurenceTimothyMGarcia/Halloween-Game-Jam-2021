@@ -11,6 +11,7 @@ export var speed = 100
 
 func _process(delta):
 	move_character()
+	detect_turn_around()
 
 func move_character():
 	if is_moving_left:
