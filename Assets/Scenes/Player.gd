@@ -15,10 +15,6 @@ var _currentHP
 
 enum boxState {platform, carried, thrown}
 
-export var maxHP = 10
-var _currentHP
-
-enum boxState {platform, carried, thrown}
 
 var _jumpReady
 

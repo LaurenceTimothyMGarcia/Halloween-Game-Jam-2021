@@ -132,6 +132,9 @@ collision_mask = 8
 position = Vector2( 0.838241, 0.0534758 )
 shape = SubResource( 7 )
 
+[node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
+position = Vector2( 0.838241, 0.0534758 )
+
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -150,10 +153,6 @@ position = Vector2( 25.4883, -5.69591 )
 [node name="GrabZone" type="Area2D" parent="."]
 position = Vector2( 13.14, 1.74 )
 collision_mask = 8
-
-[node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
-position = Vector2( 0.838241, 0.0534758 )
-shape = SubResource( 3 )
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]
