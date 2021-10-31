@@ -12,7 +12,7 @@ func _physics_process(delta):
 	var mousePos = get_global_mouse_position()
 	look_at(mousePos)
 	
-	if(Input.is_mouse_button_pressed(1)) and can_fire:
+	if Input.is_action_pressed("shoot") and can_fire and !get_parent().holdingBox:
 
 		var bulletInstance = bullet.instance()
 		bulletInstance.position = $MuzzleArea.global_position 

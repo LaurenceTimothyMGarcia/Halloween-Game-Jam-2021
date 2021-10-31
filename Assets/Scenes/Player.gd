@@ -15,6 +15,11 @@ var _currentHP
 
 enum boxState {platform, carried, thrown}
 
+export var maxHP = 10
+var _currentHP
+
+enum boxState {platform, carried, thrown}
+
 var _jumpReady
 
 var _facingRight
@@ -27,6 +32,7 @@ var holdingBox
 var _stunned
 var _knockedBack
 var _invincible
+var numKeys = 0
 
 signal facing_left
 signal facing_right
@@ -195,3 +201,9 @@ func _on_KnockbackTimer_timeout():
 
 func _on_InvincibleTimer_timeout():
 	_invincible = false
+		
+func collectKey():
+	numKeys += 1
+	
+func useKey():
+	numKeys -= 1
