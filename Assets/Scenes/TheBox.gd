@@ -17,6 +17,8 @@ var swapSideDist
 
 var facingRight
 
+var _invincible
+
 signal box_grabbed
 signal box_thrown
 
@@ -25,12 +27,20 @@ func _ready():
 	currentState = boxState.platform
 	_moveDir = Vector2()
 	_currentHP = maxHP
+	_invincible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	_invincibleHandler()
 	movementHandler(delta)
 	_tryDying()
+
+func _invincibleHandler():
+	if _invincible:
+		$Sprite.modulate = Color(1,1,1,.25)
+	else:
+		$Sprite.modulate = Color(1,1,1,1)
 
 func _enterCarriedMode():
 	if currentState == boxState.platform:
@@ -90,7 +100,16 @@ func _on_Player_facing_right():
 func takeDamage(var amount):
 	_currentHP = clamp(_currentHP - amount, 0, maxHP)
 
+func getHurt(var amount):
+	if !_invincible:
+		takeDamage(amount)
+		_invincible = true
+		$InvincibleTimer.start()
+
 func _tryDying():
 	if (_currentHP == 0):
 		print("heck")
 		takeDamage(-100)
+
+func _on_InvincibleTimer_timeout():
+	_invincible = false
