@@ -10,7 +10,7 @@ export var gravityAmount = 500
 export var crawlMaxSpeed = 200
 export var crawlAccel = 10
 export var maxHP = 5;
-var _currentHP = maxHP
+var _currentHP
 var _actualGravity
 var facingRight
 var hasLanded
@@ -89,6 +89,7 @@ func chaseHandler(var delta):
 			$AnimationPlayer.play("LeftWalk")
 			velocity.x -= crawlAccel
 		if !hasLanded:
+			$TargetRecognized.play()
 			$AnimationPlayer.play("Ceiling")
 		if is_on_floor():
 			hasLanded = true
@@ -139,7 +140,3 @@ func _tryDying():
 func getHurt(var amount):
 	$AnimationPlayer.play("GetHurt")
 	takeDamage(amount)
-	
-func _checkDead():
-	if _currentHP == 0:
-		queue_free()

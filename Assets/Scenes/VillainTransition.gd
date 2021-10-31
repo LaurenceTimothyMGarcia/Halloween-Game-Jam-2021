@@ -13,7 +13,3 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("thebox"):
 		print("Box Touched")
 		get_tree().change_scene_to(target_scene)
-
-
-func _on_Player_key_amt_changed(newamt):
-	pass # Replace with function body.

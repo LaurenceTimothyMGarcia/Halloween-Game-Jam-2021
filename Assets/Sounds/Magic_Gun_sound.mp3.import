@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Magic_Gun_sound.mp3-ccc51f7933e1d6ed919814f1276bcd00.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Magic_Gun_sound.mp3"
+dest_files=[ "res://.import/Magic_Gun_sound.mp3-ccc51f7933e1d6ed919814f1276bcd00.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
