@@ -29,6 +29,10 @@ func _on_Player_lost_health(newamt):
 
 func _on_The_Box_lost_health(newamt):
 	$"PlayerHPBar/BoxHPBar".value = newamt * boxBarCoefficient + barMin
+	if newamt <= 2:
+		$BoxIcon3.visible = true
+	elif newamt <= 4:
+		$BoxIcon2.visible = true
 
 
 func _on_Player_key_amt_changed(newamt):
