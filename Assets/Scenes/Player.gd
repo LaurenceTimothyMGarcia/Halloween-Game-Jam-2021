@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 # Declare member variables here.
-export var walkSpeed = 400
+export var walkSpeed = 200
 export var jumpVel = 500
 export var gravity = 1000
 export var fallMultiplier = 2
@@ -178,6 +178,8 @@ func getHurt(var fromLeft, var amount):
 			_lookRight()
 		
 		call_deferred("_throwBox")
+		
+		$AnimationPlayer.play("Hit")
 		
 		takeDamage(amount)
 		

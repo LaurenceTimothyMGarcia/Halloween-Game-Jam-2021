@@ -2,13 +2,14 @@
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Gorgon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/Key.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scenes/PlayerTester.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=9]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
@@ -21,8 +22,9 @@ position = Vector2( 248, 120 )
 collision_mask = 13
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
+position = Vector2( 17.827, -6.841 )
 zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
 
 [node name="Floor" type="StaticBody2D" parent="." groups=[
 "platforms",

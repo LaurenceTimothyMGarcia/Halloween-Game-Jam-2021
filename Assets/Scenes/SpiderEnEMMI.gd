@@ -73,14 +73,19 @@ func _lookLeft():
 func chaseHandler(var delta):
 	if currentState == spiderState.hunting:
 		if is_on_wall():
+			$AnimationPlayer.play("Climb")
 			_actualGravity = 0
 			velocity.y = -crawlMaxSpeed
 		else:
 			_actualGravity = gravityAmount
 		if hasLanded and facingRight and velocity.x <= crawlMaxSpeed:
+			$AnimationPlayer.play("RightWalk")
 			velocity.x += crawlAccel
 		elif hasLanded and !facingRight and velocity.x >= -crawlMaxSpeed:
+			$AnimationPlayer.play("LeftWalk")
 			velocity.x -= crawlAccel
+		if !hasLanded:
+			$AnimationPlayer.play("Ceiling")
 		if is_on_floor():
 			hasLanded = true
 		
