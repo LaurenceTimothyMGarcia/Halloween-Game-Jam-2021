@@ -34,6 +34,7 @@ signal facing_left
 signal facing_right
 
 signal lost_health(newamt)
+signal key_amt_changed(newamt)
 
 var velocity = Vector2()
 
@@ -203,6 +204,8 @@ func _on_InvincibleTimer_timeout():
 		
 func collectKey():
 	numKeys += 1
+	emit_signal("key_amt_changed", numKeys)
 	
 func useKey():
 	numKeys -= 1
+	emit_signal("key_amt_changed", numKeys)

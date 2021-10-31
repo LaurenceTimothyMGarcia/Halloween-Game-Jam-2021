@@ -49,13 +49,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="KeySprite"]
+[node name="KeyCounter" type="Label" parent="KeySprite"]
 margin_left = 1033.78
 margin_top = 364.632
 margin_right = 1077.78
 margin_bottom = 403.632
 rect_scale = Vector2( 20, 20 )
-text = "1"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
