@@ -8,7 +8,7 @@
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle"
 loop = true
 step = 0.0833333
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "Jump"
 length = 0.666667
 loop = true
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "Walk_Left"
 length = 0.666667
 loop = true
@@ -79,19 +79,16 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 1.64562
 height = 3.76375
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 9.75712, 12.0971 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 5
 script = ExtResource( 2 )
-
-[node name="Gun" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1.18187, 0.0649617 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0.136904, 1.69594 )
@@ -105,9 +102,9 @@ vframes = 3
 frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 4 )
-anims/Jump = SubResource( 6 )
-anims/Walk_Left = SubResource( 7 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Walk_Left = SubResource( 4 )
 anims/Walk_Right = SubResource( 5 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
@@ -117,7 +114,7 @@ collision_mask = 14
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( -0.5, 0 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )
@@ -128,7 +125,7 @@ collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 0.838241, 0.0534758 )
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -141,6 +138,9 @@ one_shot = true
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="Gun" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1.18187, 0.0649617 )
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]

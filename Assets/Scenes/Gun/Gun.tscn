@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Scenes/Gun/Gun.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Gun/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/Gun.png" type="Texture" id=3]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
 
 [node name="MuzzleArea" type="Position2D" parent="."]
