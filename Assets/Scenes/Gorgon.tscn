@@ -7,7 +7,7 @@
 radius = 15.5
 height = 16.2522
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "AttackLeft"
 step = 0.0833333
 tracks/0/type = "value"
@@ -43,7 +43,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "AttackRight"
 step = 0.0833333
 tracks/0/type = "value"
@@ -59,8 +59,7 @@ tracks/0/keys = {
 "values": [ 22, 23, 25, 27 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "ChaseLeft"
+[sub_resource type="Animation" id=4]
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -95,7 +94,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "Death"
 step = 0.0833333
 tracks/0/type = "value"
@@ -111,12 +110,11 @@ tracks/0/keys = {
 "values": [ 28, 29, 30, 31, 32, 33 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 resource_name = "GetHurt"
 step = 0.0833333
 
-[sub_resource type="Animation" id=2]
-resource_name = "WalkLeft"
+[sub_resource type="Animation" id=8]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -132,8 +130,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "WalkRight"
+[sub_resource type="Animation" id=9]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -149,10 +146,10 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11 ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 7.71307, 23.8621 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 7.94905, 20.7945 )
 
 [node name="Gorgon" type="KinematicBody2D"]
@@ -168,17 +165,17 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 hframes = 6
 vframes = 6
-frame = 16
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/AttackLeft = SubResource( 6 )
-anims/AttackRight = SubResource( 7 )
-anims/ChaseLeft = SubResource( 3 )
+anims/AttackLeft = SubResource( 2 )
+anims/AttackRight = SubResource( 3 )
+anims/ChaseLeft = SubResource( 4 )
 anims/ChaseRight = SubResource( 5 )
-anims/Death = SubResource( 8 )
-anims/GetHurt = SubResource( 11 )
-anims/WalkLeft = SubResource( 2 )
-anims/WalkRight = SubResource( 4 )
+anims/Death = SubResource( 6 )
+anims/GetHurt = SubResource( 7 )
+anims/WalkLeft = SubResource( 8 )
+anims/WalkRight = SubResource( 9 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -23.8075, -1.65179 )
@@ -191,9 +188,11 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2( -16.5178, -0.23597 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
-[node name="AttackDetector" type="Area2D" parent="."]
+[node name="AttackDetector" type="Area2D" parent="." groups=[
+"enemies",
+]]
 monitoring = false
 monitorable = false
 collision_layer = 0
@@ -202,7 +201,7 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetector"]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -16.7538, -3.53953 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_entered" from="AttackDetector" to="." method="_on_AttackDetector_body_entered"]

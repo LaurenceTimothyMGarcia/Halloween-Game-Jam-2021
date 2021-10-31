@@ -17,8 +17,6 @@ config/icon="res://Assets/Sprites/icon.png"
 
 window/size/width=1920
 window/size/height=1080
-window/size/test_width=1280
-window/size/test_height=720
 
 [input]
 
@@ -66,6 +64,8 @@ shoot={
 2d_render/layer_4="Box"
 2d_physics/layer_4="Box"
 2d_physics/layer_5="PlayerBullet"
+2d_render/layer_6="Transition"
+2d_physics/layer_6="Transition"
 
 [physics]
 

@@ -15,6 +15,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()	#delete off screen bullets
 
 func _on_Bullet_body_entered(body):
-	if body.has_method("hit"):
-		body.hit()
+	if body.is_in_group("player"):
+		return
+	if body.has_method("getHurt"):
+		body.getHurt(1)
+		print("ouch!")
 	queue_free()

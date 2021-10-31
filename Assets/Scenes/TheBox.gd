@@ -39,6 +39,7 @@ func _physics_process(delta):
 	movementHandler(delta)
 	_tryDying()
 	_spriteChange()
+	_checkDead()
 
 func _invincibleHandler():
 	if _invincible:
@@ -125,3 +126,7 @@ func _spriteChange():
 
 func _on_InvincibleTimer_timeout():
 	_invincible = false
+	
+func _checkDead():
+	if _currentHP == 0:
+		queue_free()
