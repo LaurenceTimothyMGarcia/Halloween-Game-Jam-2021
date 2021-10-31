@@ -76,7 +76,7 @@ func _lookLeft():
 		$GrabPoint.position.x = -_grabPointSwapDistance
 		$GrabZone.scale *= -1
 		$Gun.position.x *= -1
-		$Player.scale.x *= -1
+		$Sprite.scale.x *= -1
 		emit_signal("facing_left")
 
 func _lookRight():
@@ -85,7 +85,7 @@ func _lookRight():
 		$GrabPoint.position.x = _grabPointSwapDistance
 		$GrabZone.scale *= -1
 		$Gun.position.x *= -1
-		$Player.scale.x *= -1
+		$Sprite.scale.x *= -1
 		emit_signal("facing_right")
 
 func _on_GroundedChecker_body_entered(body):
