@@ -63,7 +63,11 @@ position = Vector2( 352.618, 188.041 )
 collision_layer = 8
 mass = 500.0
 
+[node name="Key" parent="." instance=ExtResource( 5 )]
+position = Vector2( 541.479, 209.76 )
+
 [node name="UI Layer" parent="." instance=ExtResource( 8 )]
+dialogue_file_path = "res://Assets/Scenes/Dialogue/data/test_conversation.json"
 
 [node name="UI Layer2" type="CanvasLayer" parent="."]
 
@@ -86,9 +90,6 @@ text = "hurt box"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Key" parent="." instance=ExtResource( 5 )]
-position = Vector2( 541.479, 209.76 )
 
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 822.601, 191.17 )

@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://Assets/Scenes/Dialogue/DialogueBox.gd"
+}, {
+"base": "Node",
+"class": "DialoguePlayer",
+"language": "GDScript",
+"path": "res://Assets/Scenes/Dialogue/DialoguePlayer.gd"
+} ]
+_global_script_class_icons={
+"DialogueBox": "",
+"DialoguePlayer": ""
+}
+
 [application]
 
 config/name="Halloween Game Jam 2021"

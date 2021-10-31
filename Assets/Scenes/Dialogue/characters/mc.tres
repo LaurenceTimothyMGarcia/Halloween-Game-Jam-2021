@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Scenes/Dialogue/characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/mc sprite 102921.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/mc sprite disgust 102921.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "mc"
+backstory = "This is the main character"
+expressions = {
+"disgust": ExtResource( 3 ),
+"neutral": ExtResource( 2 )
+}

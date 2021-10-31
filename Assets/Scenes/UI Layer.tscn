@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Sprites/hp bar only green103021.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/hp bar only red 103021.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Sprites/portrait w bg box 1.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/portrait w bg mc.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Scenes/Dialogue/DialogueBox.tscn" type="PackedScene" id=10]
 
 [node name="UI Layer" type="CanvasLayer"]
 script = ExtResource( 9 )
@@ -111,3 +112,5 @@ stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DialogueBox" parent="." instance=ExtResource( 10 )]
