@@ -107,6 +107,10 @@ func _slamBox():
 
 func _slamPlayer():
 	thePlayer.call("getHurt", facingRight, 1)
+	if facingRight:
+		velocity.x = 2 * -crawlMaxSpeed
+	else:
+		velocity.x = 2 * crawlMaxSpeed
 
 func _on_AggroZone_body_entered(body):
 	if body.is_in_group("player"):
