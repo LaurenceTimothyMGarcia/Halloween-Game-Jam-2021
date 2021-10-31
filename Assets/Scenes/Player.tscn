@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Sprites/Player_SpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scenes/Gun/Gun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/Skylines Sky.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Skylines Buildings.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.19222
@@ -155,6 +157,29 @@ one_shot = true
 
 [node name="Gun" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1.18187, 0.0649617 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1900, 0 )
+
+[node name="Skylines Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 0.2 )
+motion_mirroring = Vector2( 1900, 0 )
+
+[node name="Skylines Buildings" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 5 )
+centered = false
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]
