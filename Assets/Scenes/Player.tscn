@@ -10,7 +10,7 @@
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 resource_name = "Hit"
 length = 2.0
 step = 0.0833333
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ 18, 19 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -79,11 +79,11 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 1.49679
 height = 4.34414
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 12.6496, 6.96498 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -104,8 +104,8 @@ vframes = 5
 frame = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hit = SubResource( 12 )
-anims/Idle = SubResource( 13 )
+anims/Hit = SubResource( 2 )
+anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
 anims/Walk_Left = SubResource( 5 )
 
@@ -116,7 +116,7 @@ collision_mask = 14
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( -0.5, 0 )
 rotation = 1.5708
-shape = SubResource( 10 )
+shape = SubResource( 6 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )
@@ -127,7 +127,7 @@ collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 3.59135, 0.0534758 )
-shape = SubResource( 11 )
+shape = SubResource( 7 )
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -146,7 +146,7 @@ position = Vector2( 1.18187, 0.0649617 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.25, 0.25 )
+zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
