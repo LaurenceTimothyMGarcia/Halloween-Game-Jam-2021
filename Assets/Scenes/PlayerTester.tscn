@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
@@ -29,7 +31,22 @@ position = Vector2( 443, 265 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Floor"]
-position = Vector2( 443.5, 265.5 )
+position = Vector2( 444.294, 265.5 )
+scale = Vector2( 8.51562, 1.10938 )
+texture = ExtResource( 2 )
+
+[node name="Floor2" type="StaticBody2D" parent="." groups=[
+"platforms",
+]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+position = Vector2( 986.885, 265 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor2"]
+position = Vector2( 986.199, 266.998 )
 scale = Vector2( 8.51562, 1.10938 )
 texture = ExtResource( 2 )
 
@@ -42,3 +59,10 @@ hitHealth = 3
 position = Vector2( 352.618, 188.041 )
 collision_layer = 8
 mass = 500.0
+
+[node name="Key" parent="." instance=ExtResource( 5 )]
+position = Vector2( 541.479, 209.76 )
+
+[node name="Door" parent="." instance=ExtResource( 6 )]
+position = Vector2( 822.601, 191.17 )
+scale = Vector2( 0.5, 0.5 )

@@ -22,6 +22,8 @@ var theBox
 
 var holdingBox
 
+var numKeys = 0
+
 signal facing_left
 signal facing_right
 
@@ -127,3 +129,9 @@ func _tryDying():
 	if (_currentHP == 0):
 		print("fuck")
 		takeDamage(-100)
+		
+func collectKey():
+	numKeys += 1
+	
+func useKey():
+	numKeys -= 1
