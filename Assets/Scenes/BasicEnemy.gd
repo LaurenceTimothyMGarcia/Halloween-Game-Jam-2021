@@ -13,7 +13,6 @@ export var hitHealth = 1;
 func _process(delta):
 	move_character()
 	detect_turn_around()
-	print(hitHealth)
 
 func move_character():
 	if is_moving_left:

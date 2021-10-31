@@ -4,8 +4,8 @@
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/Key.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/KeyAndDoor/Key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/KeyAndDoor/Door.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
@@ -63,6 +63,16 @@ mass = 500.0
 [node name="Key" parent="." instance=ExtResource( 5 )]
 position = Vector2( 541.479, 209.76 )
 
+[node name="Key2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 987.974, 200.77 )
+
+[node name="Key3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 787.201, 206.014 )
+
 [node name="Door" parent="." instance=ExtResource( 6 )]
-position = Vector2( 822.601, 191.17 )
+position = Vector2( 684.008, 189.672 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Door2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 883.282, 191.919 )
 scale = Vector2( 0.5, 0.5 )

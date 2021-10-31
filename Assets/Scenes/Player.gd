@@ -45,6 +45,7 @@ func _physics_process(delta):
 	_movementHandler(delta)
 	_theBoxHandler()
 	_tryDying()
+	print(numKeys)
 
 func _lookAtMouse():
 	if get_global_mouse_position().x >= position.x:
