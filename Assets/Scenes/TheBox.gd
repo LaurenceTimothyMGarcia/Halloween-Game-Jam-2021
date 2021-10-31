@@ -7,6 +7,9 @@ export var latchSpeed = 1000
 enum boxState {platform, carried, thrown}
 var currentState
 
+export var maxHP = 6
+var _currentHP
+
 var targetPos
 var _moveDir
 
@@ -14,18 +17,34 @@ var swapSideDist
 
 var facingRight
 
+var _invincible
+
 signal box_grabbed
 signal box_thrown
+
+signal lost_health(newamt)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentState = boxState.platform
 	_moveDir = Vector2()
+	_currentHP = maxHP
+	_invincible = false
+	$AnimationPlayer.play("Unbroken")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	_invincibleHandler()
 	movementHandler(delta)
+	_tryDying()
+	_spriteChange()
+
+func _invincibleHandler():
+	if _invincible:
+		$Sprite.modulate = Color(1,1,1,.25)
+	else:
+		$Sprite.modulate = Color(1,1,1,1)
 
 func _enterCarriedMode():
 	if currentState == boxState.platform:
@@ -40,9 +59,9 @@ func _enterThrownMode():
 		call_deferred("set_mode",MODE_CHARACTER)
 		# $Hitbox.disabled = false
 		if facingRight:
-			linear_velocity = Vector2(500,-30)
+			linear_velocity = Vector2(400,-10)
 		else:
-			linear_velocity = Vector2(-500,-30)
+			linear_velocity = Vector2(-400,-10)
 
 func _enterPlatformMode():
 	if currentState == boxState.thrown:
@@ -80,3 +99,29 @@ func _on_Player_facing_right():
 	if currentState == boxState.carried:
 		position.x += 2 * swapSideDist
 		facingRight = true
+
+
+func takeDamage(var amount):
+	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+	emit_signal("lost_health", _currentHP)
+
+func getHurt(var amount):
+	if !_invincible:
+		takeDamage(amount)
+		_invincible = true
+		$InvincibleTimer.start()
+
+func _tryDying():
+	if (_currentHP == 0):
+		print("heck")
+		takeDamage(-100)
+
+func _spriteChange():
+	if (_currentHP <= 2):
+		$AnimationPlayer.play("SecondBreak")
+	elif (_currentHP <= 4):
+		$AnimationPlayer.play("FirstBreak")
+	
+
+func _on_InvincibleTimer_timeout():
+	_invincible = false

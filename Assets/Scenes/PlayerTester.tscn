@@ -1,24 +1,28 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Gorgon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/KeyAndDoor/Key.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Scenes/KeyAndDoor/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/Key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/PlayerTester.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 248, 120 )
 collision_mask = 13
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
+position = Vector2( 17.827, -6.841 )
 zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
 
 [node name="Floor" type="StaticBody2D" parent="." groups=[
 "platforms",
@@ -53,26 +57,45 @@ texture = ExtResource( 2 )
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 605.568, 152.942 )
 collision_mask = 13
-hitHealth = 3
 
 [node name="The Box" parent="." instance=ExtResource( 4 )]
 position = Vector2( 352.618, 188.041 )
 collision_layer = 8
 mass = 500.0
 
+[node name="UI Layer" parent="." instance=ExtResource( 8 )]
+
+[node name="UI Layer2" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="UI Layer2"]
+margin_left = 401.677
+margin_top = 11.2973
+margin_right = 471.677
+margin_bottom = 31.2973
+text = "hurt man"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoxButton" type="Button" parent="UI Layer2"]
+margin_left = 494.986
+margin_top = 13.1517
+margin_right = 564.986
+margin_bottom = 33.1517
+text = "hurt box"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Key" parent="." instance=ExtResource( 5 )]
 position = Vector2( 541.479, 209.76 )
 
-[node name="Key2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 987.974, 200.77 )
-
-[node name="Key3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 787.201, 206.014 )
-
 [node name="Door" parent="." instance=ExtResource( 6 )]
-position = Vector2( 684.008, 189.672 )
+position = Vector2( 822.601, 191.17 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Door2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 883.282, 191.919 )
-scale = Vector2( 0.5, 0.5 )
+[connection signal="key_amt_changed" from="Player" to="UI Layer" method="_on_Player_key_amt_changed"]
+[connection signal="lost_health" from="Player" to="UI Layer" method="_on_Player_lost_health"]
+[connection signal="lost_health" from="The Box" to="UI Layer" method="_on_The_Box_lost_health"]
+[connection signal="pressed" from="UI Layer2/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="UI Layer2/BoxButton" to="." method="_on_BoxButton_pressed"]
