@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Scenes/SpiderEnEMMI.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/Target_lock_on.mp3" type="AudioStream" id=3]
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=7]
 resource_name = "Ceiling"
 step = 0.0833333
 tracks/0/type = "value"
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=8]
 resource_name = "Climb"
 length = 0.333333
 loop = true
@@ -39,6 +39,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+resource_name = "RightWalk"
+loop = true
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -47,10 +49,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.583333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 18, 19, 20, 21 ]
+"values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -86,7 +88,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-loop = true
+resource_name = "Death"
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -95,10 +97,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.583333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11, 12, 13 ]
+"values": [ 18, 19, 20, 21 ]
 }
 
 [sub_resource type="CircleShape2D" id=11]
@@ -121,8 +123,8 @@ vframes = 5
 frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Ceiling = SubResource( 13 )
-anims/Climb = SubResource( 14 )
+anims/Ceiling = SubResource( 7 )
+anims/Climb = SubResource( 8 )
 anims/Death = SubResource( 3 )
 anims/GetHurt = SubResource( 9 )
 anims/LeftWalk = SubResource( 10 )

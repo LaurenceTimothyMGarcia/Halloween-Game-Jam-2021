@@ -13,7 +13,7 @@
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -47,6 +47,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "Walk_Left"
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -63,12 +64,13 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 1.49679
 height = 4.34414
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 12.2746, 13.1867 )
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 1.49679
+height = 4.34414
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -87,8 +89,8 @@ hframes = 4
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 8 )
-anims/Jump = SubResource( 9 )
+anims/Idle = SubResource( 11 )
+anims/Jump = SubResource( 12 )
 anims/Walk_Left = SubResource( 4 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
@@ -98,7 +100,7 @@ collision_mask = 14
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( -0.5, 0 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 13 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )

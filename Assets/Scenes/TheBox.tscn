@@ -7,6 +7,23 @@
 extents = Vector2( 14.048, 9.04574 )
 
 [sub_resource type="Animation" id=5]
+resource_name = "Unbroken"
+length = 0.0833333
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
 resource_name = "FirstBreak"
 length = 0.0833333
 step = 0.0833333
@@ -23,7 +40,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 resource_name = "SecondBreak"
 length = 0.0833333
 step = 0.0833333
@@ -38,23 +55,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 2 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "Unbroken"
-length = 0.0833333
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
 }
 
 [sub_resource type="CapsuleShape2D" id=6]

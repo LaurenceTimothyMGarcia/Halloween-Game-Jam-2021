@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Levels/TileSet.tres" type="TileSet" id=2]
@@ -6,11 +6,10 @@
 [ext_resource path="res://Assets/Scenes/SpiderEnEMMI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/Gorgon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Scenes/OutofBounds.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Scenes/VillainTransition.tscn" type="PackedScene" id=9]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="SceneTransition" parent="." instance=ExtResource( 9 )]
 position = Vector2( 779.939, -115.966 )
@@ -40,7 +39,7 @@ tile_data = PoolIntArray( -327690, 5, 0, -327689, 5, 0, -327688, 5, 0, -327687, 
 position = Vector2( 458.038, -124.063 )
 
 [node name="UI Layer" parent="." instance=ExtResource( 6 )]
-script = ExtResource( 7 )
+dialogue_file_path = "res://Assets/Scenes/Dialogue/data/test_conversation.json"
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 166.677, 255.572 )

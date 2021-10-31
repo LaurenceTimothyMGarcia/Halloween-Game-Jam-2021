@@ -44,7 +44,6 @@ func _physics_process(delta):
 	faceTarget()
 	chaseHandler(delta)
 	_collisionHandler()
-	_checkDead()
 
 func dormantHandler(var delta):
 	if currentState == spiderState.dormant:
