@@ -94,9 +94,9 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 1.64562
-height = 3.76375
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 1.82458
+height = 5.5106
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 9.75712, 12.0971 )
@@ -132,7 +132,7 @@ collision_mask = 14
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( -0.5, 0 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )
@@ -144,9 +144,6 @@ collision_mask = 8
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 0.838241, 0.0534758 )
 shape = SubResource( 7 )
-
-[node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
-position = Vector2( 0.838241, 0.0534758 )
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -185,6 +182,7 @@ motion_mirroring = Vector2( 1900, 0 )
 [node name="Skylines Buildings" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource( 5 )
 centered = false
+
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )
 
