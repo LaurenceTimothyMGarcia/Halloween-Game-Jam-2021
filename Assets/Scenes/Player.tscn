@@ -161,6 +161,7 @@ stream = ExtResource( 8 )
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
+volume_db = -6.0
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]
