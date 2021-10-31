@@ -8,7 +8,7 @@
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=8]
 resource_name = "Idle"
 loop = true
 step = 0.0833333
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 resource_name = "Jump"
 length = 0.666667
 loop = true
@@ -107,8 +107,8 @@ vframes = 3
 frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 2 )
-anims/Jump = SubResource( 3 )
+anims/Idle = SubResource( 8 )
+anims/Jump = SubResource( 9 )
 anims/Walk_Left = SubResource( 4 )
 anims/Walk_Right = SubResource( 5 )
 

@@ -33,6 +33,8 @@ var numKeys = 0
 signal facing_left
 signal facing_right
 
+signal lost_health(newamt)
+
 var velocity = Vector2()
 
 
@@ -160,6 +162,7 @@ func _on_GrabZone_body_exited(body):
 
 func takeDamage(var amount):
 	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+	emit_signal("lost_health", _currentHP)
 
 func _tryDying():
 	if (_currentHP == 0):

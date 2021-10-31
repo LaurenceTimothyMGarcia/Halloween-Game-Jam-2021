@@ -22,6 +22,8 @@ var _invincible
 signal box_grabbed
 signal box_thrown
 
+signal lost_health(newamt)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentState = boxState.platform
@@ -99,6 +101,7 @@ func _on_Player_facing_right():
 
 func takeDamage(var amount):
 	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+	emit_signal("lost_health", _currentHP)
 
 func getHurt(var amount):
 	if !_invincible:
