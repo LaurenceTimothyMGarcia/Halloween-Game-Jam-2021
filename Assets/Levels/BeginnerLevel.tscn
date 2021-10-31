@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Levels/TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Levels/Larry_Level_1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Scenes/OutofBounds.tscn" type="PackedScene" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -39,6 +40,9 @@ position = Vector2( 1091.69, -405.601 )
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 623.144, -288.977 )
+
+[node name="Area2D" parent="." instance=ExtResource( 9 )]
+position = Vector2( 536.136, 221.868 )
 
 [connection signal="key_amt_changed" from="Player" to="UI Layer" method="_on_Player_key_amt_changed"]
 [connection signal="lost_health" from="Player" to="UI Layer" method="_on_Player_lost_health"]

@@ -177,7 +177,7 @@ func takeDamage(var amount):
 
 func _tryDying():
 	if (_currentHP == 0):
-		print("fuck")
+		get_tree().change_scene("res://Assets/Levels/GameOver.tscn")
 		takeDamage(-100)
 
 func getHurt(var fromLeft, var amount):

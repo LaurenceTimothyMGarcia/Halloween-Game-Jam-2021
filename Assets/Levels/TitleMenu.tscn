@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Levels/TitleMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Halloween Night.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sounds/Main_Menu_or_Theme_.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sprites/TheBoxText.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Levels/BeginnerLevel.tscn" type="PackedScene" id=5]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -12,6 +13,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+target_scene = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
