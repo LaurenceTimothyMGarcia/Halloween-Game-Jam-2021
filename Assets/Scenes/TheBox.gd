@@ -57,9 +57,9 @@ func _enterThrownMode():
 		call_deferred("set_mode",MODE_CHARACTER)
 		# $Hitbox.disabled = false
 		if facingRight:
-			linear_velocity = Vector2(500,-30)
+			linear_velocity = Vector2(400,-10)
 		else:
-			linear_velocity = Vector2(-500,-30)
+			linear_velocity = Vector2(-400,-10)
 
 func _enterPlatformMode():
 	if currentState == boxState.thrown:

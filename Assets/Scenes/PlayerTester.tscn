@@ -10,7 +10,6 @@
 [ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=9]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
 

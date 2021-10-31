@@ -73,8 +73,10 @@ func _stunnedHandler(var delta):
 		velocity = move_and_slide(velocity)
 	if _invincible:
 		$Sprite.modulate = Color(1,1,1,.25)
+		$"Gun/Sprite".modulate = Color(1,1,1,.25)
 	else:
 		$Sprite.modulate = Color(1,1,1,1)
+		$"Gun/Sprite".modulate = Color(1,1,1,1)
 
 func _lookAtMouse():
 	if get_global_mouse_position().x >= position.x:
@@ -117,6 +119,7 @@ func _lookLeft():
 		$GrabZone.scale *= -1
 		$GrabZone.position.x *= -1
 		$Gun.position.x *= -1
+		$"Gun/Sprite".scale.y *= -1
 		$Sprite.scale.x *= -1
 		emit_signal("facing_left")
 
@@ -127,6 +130,7 @@ func _lookRight():
 		$GrabZone.scale *= -1
 		$GrabZone.position.x *= -1
 		$Gun.position.x *= -1
+		$"Gun/Sprite".scale.y *= -1
 		$Sprite.scale.x *= -1
 		emit_signal("facing_right")
 
@@ -143,6 +147,7 @@ func _theBoxHandler():
 			connect("facing_right", theBox, "_on_Player_facing_right")
 			theBox.facingRight = _facingRight
 			holdingBox = true
+			$"Gun/Sprite".visible = false
 		elif theBox.currentState == boxState.carried:
 			_throwBox()
 
@@ -152,6 +157,7 @@ func _throwBox():
 		disconnect("facing_right", theBox, "_on_Player_facing_right")
 		theBox.call("getThrown")
 		holdingBox = false
+		$"Gun/Sprite".visible = true
 
 func _on_GrabZone_body_entered(body):
 	if body.is_in_group("thebox"):
