@@ -91,7 +91,7 @@ func _movementHandler(var delta):
 		$AnimationPlayer.play("Walk_Left")
 	elif Input.is_action_pressed("move_right"):
 		velocity.x += 1
-		$AnimationPlayer.play("Walk_Right")
+		$AnimationPlayer.play("Walk_Left")
 	else:
 		$AnimationPlayer.play("Idle")
 	

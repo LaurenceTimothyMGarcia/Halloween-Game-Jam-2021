@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Door.png-b9191d63c99d4a76f73a0c99e043368f.stex"
+path="res://.import/Villain_NoMask_Walk.png-4b2ddac6361d48103080b5d5c6c475fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Door.png"
-dest_files=[ "res://.import/Door.png-b9191d63c99d4a76f73a0c99e043368f.stex" ]
+source_file="res://Assets/Sprites/Villain_NoMask_Walk.png"
+dest_files=[ "res://.import/Villain_NoMask_Walk.png-4b2ddac6361d48103080b5d5c6c475fe.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
