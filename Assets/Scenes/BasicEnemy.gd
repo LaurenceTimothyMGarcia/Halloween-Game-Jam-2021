@@ -17,6 +17,7 @@ func _process(delta):
 		return
 	move_character()
 	detect_turn_around()
+	_checkDead()
 
 func move_character():
 	if is_moving_left:
@@ -42,6 +43,10 @@ func _tryDying():
 	if (_currentHP == 0):
 		print("fuck")
 		takeDamage(-100)
+
+func _checkDead():
+	if _currentHP == 0:
+		queue_free()
 
 func getHurt(var amount):
 	$AnimationPlayer.play("GetHurt")

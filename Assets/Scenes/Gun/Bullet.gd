@@ -19,4 +19,5 @@ func _on_Bullet_body_entered(body):
 		return
 	if body.has_method("getHurt"):
 		body.getHurt(1)
+		print("ouch!")
 	queue_free()

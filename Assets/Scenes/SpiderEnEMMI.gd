@@ -10,7 +10,7 @@ export var gravityAmount = 500
 export var crawlMaxSpeed = 200
 export var crawlAccel = 10
 export var maxHP = 5;
-var _currentHP
+var _currentHP = maxHP
 var _actualGravity
 var facingRight
 var hasLanded
@@ -44,6 +44,7 @@ func _physics_process(delta):
 	faceTarget()
 	chaseHandler(delta)
 	_collisionHandler()
+	_checkDead()
 
 func dormantHandler(var delta):
 	if currentState == spiderState.dormant:
@@ -139,3 +140,7 @@ func _tryDying():
 func getHurt(var amount):
 	$AnimationPlayer.play("GetHurt")
 	takeDamage(amount)
+	
+func _checkDead():
+	if _currentHP == 0:
+		queue_free()
