@@ -46,13 +46,18 @@ func _movementHandler(var delta):
 	velocity.x = 0
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-	if Input.is_action_pressed("move_right"):
+		$AnimationPlayer.play("Walk_Left")
+	elif Input.is_action_pressed("move_right"):
 		velocity.x += 1
+		$AnimationPlayer.play("Walk_Right")
+	else:
+		$AnimationPlayer.play("Idle")
 	
 	
 	if Input.is_action_just_pressed("jump") and _jumpReady:
 		_jumpReady = false
 		velocity.y = -jumpVel
+		$AnimationPlayer.play("Jump")
 
 	if velocity.y > 0:
 		velocity.y += gravity * delta * (fallMultiplier - 1)
@@ -71,7 +76,7 @@ func _lookLeft():
 		$GrabPoint.position.x = -_grabPointSwapDistance
 		$GrabZone.scale *= -1
 		$Gun.position.x *= -1
-		$Sprite.scale.x *= -1
+		$Player.scale.x *= -1
 		emit_signal("facing_left")
 
 func _lookRight():
@@ -80,7 +85,7 @@ func _lookRight():
 		$GrabPoint.position.x = _grabPointSwapDistance
 		$GrabZone.scale *= -1
 		$Gun.position.x *= -1
-		$Sprite.scale.x *= -1
+		$Player.scale.x *= -1
 		emit_signal("facing_right")
 
 func _on_GroundedChecker_body_entered(body):
