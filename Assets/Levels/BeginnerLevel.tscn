@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Levels/TileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/VillainTransition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Levels/Larry_Level_1.tscn" type="PackedScene" id=8]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="." groups=[
+"platforms",
+]]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( -786400, 7, 0, -786399, 7, 0, -786398, 7, 0, -786397, 7, 0, -720882, 7, 0, -720881, 7, 0, -720880, 7, 0, -720879, 7, 0, -720878, 7, 0, -720877, 7, 0, -720864, 7, 0, -720863, 7, 0, -720862, 7, 0, -720861, 7, 0, -655346, 7, 0, -655328, 7, 0, -655327, 7, 0, -655326, 7, 0, -655325, 7, 0, -524294, 7, 0, -589810, 7, 0, -589792, 7, 0, -589791, 7, 0, -589790, 7, 0, -589789, 7, 0, -458758, 7, 0, -524274, 7, 0, -524273, 7, 0, -524272, 7, 0, -524271, 7, 0, -524270, 7, 0, -524269, 7, 0, -524268, 7, 0, -524267, 7, 0, -524263, 7, 0, -524262, 7, 0, -524261, 7, 0, -524260, 7, 0, -524259, 7, 0, -524258, 7, 0, -524257, 7, 0, -524256, 7, 0, -524255, 7, 0, -524254, 7, 0, -524253, 7, 0, -393222, 7, 0, -327686, 7, 0, -262150, 7, 0, -327661, 7, 0, -327660, 7, 0, -327659, 7, 0, -327658, 7, 0, -327657, 7, 0, -327656, 7, 0, -327655, 7, 0, -196614, 7, 0, -131078, 7, 0, -65542, 7, 0, -131060, 7, 0, -131059, 7, 0, -131058, 7, 0, -131057, 7, 0, -131056, 7, 0, -131055, 7, 0, -6, 7, 0, -65528, 7, 0, -65527, 7, 0, 65530, 7, 0, 131066, 7, 0, 131067, 7, 0, 131068, 7, 0, 131069, 7, 0, 131070, 7, 0, 131071, 7, 0, 65536, 7, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 7, 0, 65546, 7, 0, 65547, 7, 0, 65548, 7, 0, 65549, 7, 0, 65550, 7, 0, 65551, 7, 0, 65552, 7, 0, 65553, 7, 0, 65554, 7, 0, 65555, 7, 0, 65556, 7, 0, 65557, 7, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3.84955, 2.73517 )
+
+[node name="SceneTransition" parent="." instance=ExtResource( 3 )]
+position = Vector2( 503.666, -274.728 )
+target_scene = ExtResource( 8 )
+
+[node name="The Box" parent="." instance=ExtResource( 4 )]
+position = Vector2( 70, 12 )
+
+[node name="UI Layer" parent="." instance=ExtResource( 6 )]
+
+[node name="Key" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1091.69, -405.601 )
+
+[node name="Door" parent="." instance=ExtResource( 7 )]
+position = Vector2( 623.144, -288.977 )
+
+[connection signal="key_amt_changed" from="Player" to="UI Layer" method="_on_Player_key_amt_changed"]
+[connection signal="lost_health" from="Player" to="UI Layer" method="_on_Player_lost_health"]
+[connection signal="lost_health" from="The Box" to="UI Layer" method="_on_The_Box_lost_health"]

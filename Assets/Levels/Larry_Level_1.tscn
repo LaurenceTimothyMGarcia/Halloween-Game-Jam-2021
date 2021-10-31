@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Scenes/SpiderEnEMMI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/Gorgon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Levels/Brayden_Level_2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Scenes/OutofBounds.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Scenes/VillainTransition.tscn" type="PackedScene" id=9]
 
@@ -14,6 +14,7 @@
 
 [node name="SceneTransition" parent="." instance=ExtResource( 9 )]
 position = Vector2( 779.939, -115.966 )
+target_scene = ExtResource( 7 )
 
 [node name="The Box" parent="." instance=ExtResource( 3 )]
 position = Vector2( -95.4594, -16.9706 )
@@ -40,7 +41,6 @@ tile_data = PoolIntArray( -327690, 5, 0, -327689, 5, 0, -327688, 5, 0, -327687, 
 position = Vector2( 458.038, -124.063 )
 
 [node name="UI Layer" parent="." instance=ExtResource( 6 )]
-script = ExtResource( 7 )
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 166.677, 255.572 )
