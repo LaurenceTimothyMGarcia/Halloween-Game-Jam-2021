@@ -10,7 +10,7 @@
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -60,17 +60,17 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 1.49679
 height = 4.34414
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 12.6496, 6.96498 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-collision_mask = 5
+collision_mask = 46
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -82,12 +82,11 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 5
-frame = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 6 )
-anims/Jump = SubResource( 4 )
-anims/Walk_Left = SubResource( 5 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Walk_Left = SubResource( 4 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
 position = Vector2( 0.865, 13.714 )
@@ -96,7 +95,7 @@ collision_mask = 14
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( -0.5, 0 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )
@@ -107,7 +106,7 @@ collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 3.59135, 0.0534758 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0

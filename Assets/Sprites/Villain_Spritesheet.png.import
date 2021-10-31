@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Door.png-b9191d63c99d4a76f73a0c99e043368f.stex"
+path="res://.import/Villain_Spritesheet.png-97cff24555d60227c9172e0f5790be0a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Door.png"
-dest_files=[ "res://.import/Door.png-b9191d63c99d4a76f73a0c99e043368f.stex" ]
+source_file="res://Assets/Sprites/Villain_Spritesheet.png"
+dest_files=[ "res://.import/Villain_Spritesheet.png-97cff24555d60227c9172e0f5790be0a.stex" ]
 
 [params]
 

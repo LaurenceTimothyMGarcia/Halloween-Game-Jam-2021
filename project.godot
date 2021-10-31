@@ -64,6 +64,8 @@ shoot={
 2d_render/layer_4="Box"
 2d_physics/layer_4="Box"
 2d_physics/layer_5="PlayerBullet"
+2d_render/layer_6="Transition"
+2d_physics/layer_6="Transition"
 
 [physics]
 
