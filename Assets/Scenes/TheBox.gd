@@ -30,6 +30,7 @@ func _ready():
 	_moveDir = Vector2()
 	_currentHP = maxHP
 	_invincible = false
+	$AnimationPlayer.play("Unbroken")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +38,7 @@ func _physics_process(delta):
 	_invincibleHandler()
 	movementHandler(delta)
 	_tryDying()
+	_spriteChange()
 
 func _invincibleHandler():
 	if _invincible:
@@ -113,6 +115,13 @@ func _tryDying():
 	if (_currentHP == 0):
 		print("heck")
 		takeDamage(-100)
+
+func _spriteChange():
+	if (_currentHP <= 2):
+		$AnimationPlayer.play("SecondBreak")
+	elif (_currentHP <= 4):
+		$AnimationPlayer.play("FirstBreak")
+	
 
 func _on_InvincibleTimer_timeout():
 	_invincible = false
