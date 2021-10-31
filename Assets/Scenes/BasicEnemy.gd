@@ -10,7 +10,7 @@ var speed = 120
 #func _ready():
 	#$AnimationPlayer.play("Walk")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#if $AnimationPlayer.current_animation == "Attack":
 		#return
 	

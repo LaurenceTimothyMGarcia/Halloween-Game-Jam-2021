@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 40.4385
-height = 159.604
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.75
@@ -15,7 +15,7 @@ height = 23.5
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( -18.8988, 16.379 )
+position = Vector2( -2.08087, 17.2199 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -26,7 +26,7 @@ texture = ExtResource( 1 )
 [node name="GroundedChecker" type="Area2D" parent="."]
 
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
-position = Vector2( -1.82337, 67.3891 )
+position = Vector2( -0.730261, 35.7868 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
