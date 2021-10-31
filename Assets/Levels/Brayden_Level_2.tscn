@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Levels/TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Key.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Levels/Brayden_Level_3.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Scenes/SpiderEnEMMI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scenes/Gorgon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=8]
@@ -15,6 +16,7 @@
 
 [node name="SceneTransition" parent="." instance=ExtResource( 11 )]
 position = Vector2( -242.45, -1362.13 )
+target_scene = ExtResource( 5 )
 
 [node name="The Box" parent="." instance=ExtResource( 8 )]
 position = Vector2( -33.1066, -14.6794 )

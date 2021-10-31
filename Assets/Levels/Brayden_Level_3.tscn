@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Scenes/VillainTransition.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Scenes/OutofBounds.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Levels/TileSet.tres" type="TileSet" id=11]
+[ext_resource path="res://Assets/Levels/GameOver.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 
@@ -111,6 +112,7 @@ tile_data = PoolIntArray( -6815664, 7, 0, -6815663, 7, 0, -6815662, 7, 0, -68156
 
 [node name="SceneTransition" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2393.14, -2800.92 )
+target_scene = ExtResource( 12 )
 
 [node name="The Box" parent="." instance=ExtResource( 7 )]
 position = Vector2( -95.4594, -16.9706 )
