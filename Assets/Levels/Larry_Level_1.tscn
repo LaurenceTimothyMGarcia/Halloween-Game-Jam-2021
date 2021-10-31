@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Levels/TileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Scenes/TheBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/SpiderEnEMMI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/Gorgon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Scenes/OutofBounds.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Spider Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 107.634, -135.639 )
 
 [node name="The Box" parent="." instance=ExtResource( 3 )]
 position = Vector2( -95.4594, -16.9706 )
@@ -32,3 +32,16 @@ tile_data = PoolIntArray( -327690, 5, 0, -327689, 5, 0, -327688, 5, 0, -327687, 
 
 [node name="Gorgon" parent="." instance=ExtResource( 5 )]
 position = Vector2( 458.038, -124.063 )
+
+[node name="UI Layer" parent="." instance=ExtResource( 6 )]
+script = ExtResource( 7 )
+
+[node name="Area2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 166.677, 255.572 )
+
+[node name="Spider Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 106.245, -133.596 )
+
+[connection signal="lost_health" from="The Box" to="UI Layer" method="_on_The_Box_lost_health"]
+[connection signal="key_amt_changed" from="Player" to="UI Layer" method="_on_Player_key_amt_changed"]
+[connection signal="lost_health" from="Player" to="UI Layer" method="_on_Player_lost_health"]

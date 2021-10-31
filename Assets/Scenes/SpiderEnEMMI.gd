@@ -9,6 +9,8 @@ var currentState
 export var gravityAmount = 500
 export var crawlMaxSpeed = 200
 export var crawlAccel = 10
+export var maxHP = 5;
+var _currentHP
 var _actualGravity
 var facingRight
 var hasLanded
@@ -32,6 +34,7 @@ func _ready():
 	strikeReady = true
 	currentState = spiderState.dormant
 	velocity = Vector2(0,0)
+	_currentHP = maxHP
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -123,3 +126,15 @@ func _on_AggroZone_body_entered(body):
 			thePlayer = body
 			theBox = body.theBox
 			currentState = spiderState.hunting
+
+func takeDamage(var amount):
+	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+
+func _tryDying():
+	if (_currentHP == 0):
+		print("fuck")
+		takeDamage(-100)
+
+func getHurt(var amount):
+	$AnimationPlayer.play("GetHurt")
+	takeDamage(amount)
