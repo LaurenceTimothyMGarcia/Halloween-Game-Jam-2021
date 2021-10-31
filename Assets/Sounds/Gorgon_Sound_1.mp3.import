@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Gorgon_Sound_1.mp3-937b23cc229fbd7e9b4f2250c28fcaa3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Gorgon_Sound_1.mp3"
+dest_files=[ "res://.import/Gorgon_Sound_1.mp3-937b23cc229fbd7e9b4f2250c28fcaa3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

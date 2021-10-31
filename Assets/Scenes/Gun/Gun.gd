@@ -19,6 +19,7 @@ func _physics_process(delta):
 		bulletInstance.rotation = rotation
 		get_parent().add_child(bulletInstance)
 		can_fire = false
+		$AudioStreamPlayer2D.play()
 		yield(get_tree().create_timer(0.3), "timeout")
 		can_fire = true
 		

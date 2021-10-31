@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Target_lock_on.mp3-0d0bca593172565df17319411ea0fac9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Target_lock_on.mp3"
+dest_files=[ "res://.import/Target_lock_on.mp3-0d0bca593172565df17319411ea0fac9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

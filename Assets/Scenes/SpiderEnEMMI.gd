@@ -88,6 +88,7 @@ func chaseHandler(var delta):
 			$AnimationPlayer.play("LeftWalk")
 			velocity.x -= crawlAccel
 		if !hasLanded:
+			$TargetRecognized.play()
 			$AnimationPlayer.play("Ceiling")
 		if is_on_floor():
 			hasLanded = true

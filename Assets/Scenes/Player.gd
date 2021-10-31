@@ -49,6 +49,7 @@ func _ready():
 	_invincible = false
 	_grabPointSwapDistance = $GrabPoint.position.x
 	_currentHP = maxHP
+	$MainTheme.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -89,15 +90,18 @@ func _movementHandler(var delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 		$AnimationPlayer.play("Walk_Left")
+		$WalkSound.play()
 	elif Input.is_action_pressed("move_right"):
 		velocity.x += 1
 		$AnimationPlayer.play("Walk_Left")
+		$WalkSound.play()
 	else:
 		$AnimationPlayer.play("Idle")
 	
 	
 	if Input.is_action_just_pressed("jump") and _jumpReady:
 		_jumpReady = false
+		$JumpSound.play()
 		velocity.y = -jumpVel
 		$AnimationPlayer.play("Jump")
 

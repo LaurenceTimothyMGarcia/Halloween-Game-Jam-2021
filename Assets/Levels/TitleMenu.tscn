@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Levels/TitleMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Halloween Night.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sounds/Main_Menu_or_Theme_.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sprites/TheBoxText.png" type="Texture" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 974.078, 354.897 )
+texture = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -96.5
+margin_right = 76.0
+margin_bottom = 96.5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 152.0
+margin_bottom = 82.0
+text = "Start"
+
+[node name="About" type="Button" parent="VBoxContainer"]
+margin_top = 86.0
+margin_right = 152.0
+margin_bottom = 106.0
+text = "About"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 110.0
+margin_right = 152.0
+margin_bottom = 130.0
+text = "Quit"
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/About" to="." method="_on_About_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

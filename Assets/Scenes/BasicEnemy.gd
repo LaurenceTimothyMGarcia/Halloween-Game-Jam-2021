@@ -49,6 +49,7 @@ func getHurt(var amount):
 
 func hit():
 	$AttackDetector.monitoring = true
+	$GorgonAttack.play()
 
 func end_of_hit():
 	$AttackDetector.monitoring = false

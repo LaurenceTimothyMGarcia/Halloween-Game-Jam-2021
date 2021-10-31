@@ -1,16 +1,19 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Sprites/Player_SpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scenes/Gun/Gun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sprites/Skylines Sky.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites/Skylines Buildings.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/jump_sound.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sounds/Main_Menu_or_Theme_.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sounds/Walking_revised.mp3" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -26,7 +29,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -64,6 +67,9 @@ tracks/0/keys = {
 radius = 1.49679
 height = 4.34414
 
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 12.2746, 13.1867 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -81,8 +87,8 @@ hframes = 4
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 5 )
-anims/Jump = SubResource( 6 )
+anims/Idle = SubResource( 8 )
+anims/Jump = SubResource( 9 )
 anims/Walk_Left = SubResource( 4 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
@@ -103,6 +109,7 @@ collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 3.59135, 0.0534758 )
+shape = SubResource( 10 )
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -145,6 +152,15 @@ motion_mirroring = Vector2( 950, 0 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 centered = false
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]

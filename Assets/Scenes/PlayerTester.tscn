@@ -58,7 +58,6 @@ texture = ExtResource( 2 )
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 605.568, 152.942 )
 collision_mask = 13
-hitHealth = 3
 
 [node name="The Box" parent="." instance=ExtResource( 4 )]
 position = Vector2( 352.618, 188.041 )

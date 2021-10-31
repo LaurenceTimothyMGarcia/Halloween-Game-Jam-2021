@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Scenes/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Gorgon_Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sounds/Gorgon_Sound_1.mp3" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.5
@@ -202,6 +203,9 @@ collision_mask = 9
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -16.7538, -3.53953 )
 shape = SubResource( 11 )
+
+[node name="GorgonAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_entered" from="AttackDetector" to="." method="_on_AttackDetector_body_entered"]
