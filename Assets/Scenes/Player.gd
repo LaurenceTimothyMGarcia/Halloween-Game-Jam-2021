@@ -15,6 +15,7 @@ var _currentHP
 
 enum boxState {platform, carried, thrown}
 
+
 var _jumpReady
 
 var _facingRight
@@ -27,9 +28,12 @@ var holdingBox
 var _stunned
 var _knockedBack
 var _invincible
+var numKeys = 0
 
 signal facing_left
 signal facing_right
+
+signal lost_health(newamt)
 
 var velocity = Vector2()
 
@@ -158,6 +162,7 @@ func _on_GrabZone_body_exited(body):
 
 func takeDamage(var amount):
 	_currentHP = clamp(_currentHP - amount, 0, maxHP)
+	emit_signal("lost_health", _currentHP)
 
 func _tryDying():
 	if (_currentHP == 0):
@@ -197,3 +202,9 @@ func _on_KnockbackTimer_timeout():
 
 func _on_InvincibleTimer_timeout():
 	_invincible = false
+		
+func collectKey():
+	numKeys += 1
+	
+func useKey():
+	numKeys -= 1

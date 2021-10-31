@@ -7,15 +7,15 @@
 extents = Vector2( 14.048, 9.04574 )
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 2.50261
-height = 24.7442
+radius = 1.13594
+height = 16.2733
 
 [node name="The Box" type="RigidBody2D" groups=[
 "platforms",
 "thebox",
 ]]
 collision_layer = 12
-collision_mask = 0
+collision_mask = 4
 mode = 1
 gravity_scale = 5.0
 script = ExtResource( 2 )
@@ -38,4 +38,9 @@ position = Vector2( 0, 13.3403 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
