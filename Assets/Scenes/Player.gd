@@ -7,6 +7,8 @@ export var jumpVel = 500
 export var gravity = 1000
 export var fallMultiplier = 2
 export var lowJumpMultiplier = 4
+export var knockedBackSpeed = 200
+export var knockedBackUp = 200
 
 export var maxHP = 10
 var _currentHP
@@ -22,6 +24,10 @@ var theBox
 
 var holdingBox
 
+var _stunned
+var _knockedBack
+var _invincible
+
 signal facing_left
 signal facing_right
 
@@ -33,16 +39,37 @@ func _ready():
 	_jumpReady = true
 	_facingRight = true
 	holdingBox = false
+	_stunned = false
+	_knockedBack = false
+	_invincible = false
 	_grabPointSwapDistance = $GrabPoint.position.x
 	_currentHP = maxHP
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	_lookAtMouse()
-	_movementHandler(delta)
-	_theBoxHandler()
+	_stunnedHandler(delta)
+	if !_stunned:
+		_lookAtMouse()
+		_movementHandler(delta)
+		_theBoxHandler()
 	_tryDying()
+
+func _stunnedHandler(var delta):
+	if _stunned:
+		velocity.x = 0
+		if _knockedBack:
+			if _facingRight:
+				velocity.x -= 1
+			else:
+				velocity.x += 1
+		velocity.x *= knockedBackSpeed
+		velocity.y += gravity * delta
+		velocity = move_and_slide(velocity)
+	if _invincible:
+		$Sprite.modulate = Color(1,1,1,.25)
+	else:
+		$Sprite.modulate = Color(1,1,1,1)
 
 func _lookAtMouse():
 	if get_global_mouse_position().x >= position.x:
@@ -107,10 +134,14 @@ func _theBoxHandler():
 			theBox.facingRight = _facingRight
 			holdingBox = true
 		elif theBox.currentState == boxState.carried:
-			disconnect("facing_left", theBox, "_on_Player_facing_left")
-			disconnect("facing_right", theBox, "_on_Player_facing_right")
-			theBox.call("getThrown")
-			holdingBox = false
+			_throwBox()
+
+func _throwBox():
+	if holdingBox:
+		disconnect("facing_left", theBox, "_on_Player_facing_left")
+		disconnect("facing_right", theBox, "_on_Player_facing_right")
+		theBox.call("getThrown")
+		holdingBox = false
 
 func _on_GrabZone_body_entered(body):
 	if body.is_in_group("thebox"):
@@ -127,3 +158,35 @@ func _tryDying():
 	if (_currentHP == 0):
 		print("fuck")
 		takeDamage(-100)
+
+func getHurt(var fromLeft, var amount):
+	if not _invincible:
+		if fromLeft:
+			_lookLeft()
+		else:
+			_lookRight()
+		
+		call_deferred("_throwBox")
+		
+		takeDamage(amount)
+		
+		_stunned = true
+		_knockedBack = true
+		_invincible = true
+		velocity.y = -knockedBackUp
+		
+		$StunTimer.start()
+		$KnockbackTimer.start()
+		$InvincibleTimer.start()
+
+
+func _on_StunTimer_timeout():
+	_stunned = false
+
+
+func _on_KnockbackTimer_timeout():
+	_knockedBack = false
+
+
+func _on_InvincibleTimer_timeout():
+	_invincible = false

@@ -51,6 +51,21 @@ collision_mask = 8
 position = Vector2( 0.838241, 0.0534758 )
 shape = SubResource( 3 )
 
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]
 [connection signal="body_exited" from="GrabZone" to="." method="_on_GrabZone_body_exited"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
