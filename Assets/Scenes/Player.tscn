@@ -162,7 +162,7 @@ position = Vector2( 1.18187, 0.0649617 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
