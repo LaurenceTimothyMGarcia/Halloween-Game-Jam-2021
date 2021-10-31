@@ -11,7 +11,7 @@ func _on_Start_pressed():
 
 
 func _on_About_pressed():
-	get_tree().change_scene("")
+	get_tree().change_scene("res://Assets/Levels/AboutPage.tscn")
 
 
 func _on_Quit_pressed():
