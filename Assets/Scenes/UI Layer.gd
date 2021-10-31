@@ -15,6 +15,7 @@ export var barMax = 255
 func _ready():
 	$PlayerHPBar.value = barMax
 	$"PlayerHPBar/BoxHPBar".value = barMax
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,3 +29,7 @@ func _on_Player_lost_health(newamt):
 
 func _on_The_Box_lost_health(newamt):
 	$"PlayerHPBar/BoxHPBar".value = newamt * boxBarCoefficient + barMin
+
+
+func _on_Player_key_amt_changed(newamt):
+	$"KeySprite/KeyCounter".text = str(newamt)

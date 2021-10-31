@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Sprites/Player_SpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.gd" type="Script" id=2]
@@ -10,7 +10,7 @@
 radius = 5.19222
 height = 14.4213
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=8]
 resource_name = "Hit"
 length = 2.0
 step = 0.0833333
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ 18, 19 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -44,6 +44,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "Walk_Left"
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -54,13 +55,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+"values": [ 6, 7, 8, 9 ]
 }
 
 [sub_resource type="Animation" id=5]
+resource_name = "Walk_Right"
 length = 0.666667
 loop = true
 step = 0.0833333
@@ -77,29 +79,12 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=6]
-length = 0.666667
-loop = true
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8, 9 ]
-}
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 1.49679
+height = 4.34414
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 1.82458
-height = 5.5106
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 9.75712, 12.0971 )
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 12.6496, 6.96498 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -119,11 +104,10 @@ vframes = 5
 frame = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hit = SubResource( 2 )
-anims/Idle = SubResource( 3 )
+anims/Hit = SubResource( 8 )
+anims/Idle = SubResource( 9 )
 anims/Jump = SubResource( 4 )
 anims/Walk_Left = SubResource( 5 )
-anims/Walk_Right = SubResource( 6 )
 
 [node name="GroundedChecker" type="Area2D" parent="."]
 position = Vector2( 0.865, 13.714 )
@@ -132,7 +116,7 @@ collision_mask = 14
 [node name="GroundCheck Area" type="CollisionShape2D" parent="GroundedChecker"]
 position = Vector2( -0.5, 0 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="GrabPoint" type="Node2D" parent="."]
 position = Vector2( 25.4883, -5.69591 )
@@ -142,8 +126,8 @@ position = Vector2( 13.14, 1.74 )
 collision_mask = 8
 
 [node name="Grabzone Area" type="CollisionShape2D" parent="GrabZone"]
-position = Vector2( 0.838241, 0.0534758 )
-shape = SubResource( 8 )
+position = Vector2( 3.59135, 0.0534758 )
+shape = SubResource( 11 )
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -186,13 +170,6 @@ motion_mirroring = Vector2( 950, 0 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 centered = false
-
-[node name="GrabPoint" type="Node2D" parent="."]
-position = Vector2( 25.4883, -5.69591 )
-
-[node name="GrabZone" type="Area2D" parent="."]
-position = Vector2( 13.14, 1.74 )
-collision_mask = 8
 
 [connection signal="body_entered" from="GroundedChecker" to="." method="_on_GroundedChecker_body_entered"]
 [connection signal="body_entered" from="GrabZone" to="." method="_on_GrabZone_body_entered"]

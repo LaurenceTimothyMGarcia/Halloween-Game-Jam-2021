@@ -10,7 +10,6 @@
 [ext_resource path="res://Assets/Scenes/UI Layer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Scenes/UI Layer.gd" type="Script" id=9]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 271.75, 37.2667 )
 
@@ -98,6 +97,7 @@ position = Vector2( 541.479, 209.76 )
 position = Vector2( 822.601, 191.17 )
 scale = Vector2( 0.5, 0.5 )
 
+[connection signal="key_amt_changed" from="Player" to="UI Layer" method="_on_Player_key_amt_changed"]
 [connection signal="lost_health" from="Player" to="UI Layer" method="_on_Player_lost_health"]
 [connection signal="lost_health" from="The Box" to="UI Layer" method="_on_The_Box_lost_health"]
 [connection signal="pressed" from="UI Layer2/Button" to="." method="_on_Button_pressed"]
