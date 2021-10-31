@@ -205,6 +205,6 @@ func _on_InvincibleTimer_timeout():
 		
 func collectKey():
 	numKeys += 1
-	
+
 func useKey():
 	numKeys -= 1

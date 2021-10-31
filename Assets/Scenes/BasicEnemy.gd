@@ -55,9 +55,6 @@ func end_of_hit():
 
 func start_walk():
 	$AnimationPlayer.play("LeftWalk")
-	
-
-
 
 func _on_PlayerDetector_body_entered(body):
 	$AnimationPlayer.play("AttackLeft")
