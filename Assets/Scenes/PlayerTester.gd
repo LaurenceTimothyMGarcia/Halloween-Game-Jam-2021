@@ -19,7 +19,7 @@ func _process(delta):
 
 
 func _on_Button_pressed():
-	$Player.takeDamage(1)
+	$Player.getHurt(false,1)
 
 
 func _on_BoxButton_pressed():
